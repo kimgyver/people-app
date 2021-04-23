@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# React Application – People Management App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```bash
+npm install
+npm start
+```
 
-## Available Scripts
+[http://locahost:3000](http://locahost:3000)
 
-In the project directory, you can run:
+## Code structure
 
-### `npm start`
+- Component
+-     Cmponents in this folder is composed of individual screens like list, create, delete, edit, search panel, alert. Generally, Input window + button.
+- CreatePerson: /create path triggers to here. Three inputs (name, age, gender) and one button exist.
+- DeletePerson: /delete path triggers. Showing user’s information plainly and button for confirming the removal of the user.
+-     EditPerson: as per /edit user request. Name, age, gender can be modified.
+- ListPerson: Result list of people search.
+- Alert: display error message coming from the screen-based components triggered by problematic user actions.
+- Context
+- This project utilized Context API state management for state handling. Context API is a lightweight version of Redux and the mechanism inside is almost same as Redux.
+- State management is required for systematic data sharing and delivery of data among components.
+- The logic of Context API modules consists of API calls and dispatch data to the Context store. It is the same as Redux.
+- E.g., the result of list could be accessed by the search panel to display the result count via the state management.
+- Two types of Context are defined. People and Alert.
+- People: consists of REST API calls of read/write/delete data and the part of dispatching result data to the Context store,
+  - SEARCH_USERS
+  - GET_USER
+  - CHANGE_USER
+  - REMOVE_USER
+  - SET_LOADING
+- Alert: Enable screen-based components to directly change the alert message and remove it automatically 5 seconds later.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  - SET_ALERT, REMOVE_ALERT
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- App
+- Overall one page screen structure
+- Router settings for edit, create, delete
 
-### `npm test`
+## Limitation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- In user Context API, CHANGE_USER and REMOVE_USER are defined but not implemented because edit/delete screens are separated components (not one-screen components), so direct API calls from them was safe and easy.
