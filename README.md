@@ -7,6 +7,8 @@ npm start
 
 [http://locahost:3000](http://locahost:3000)
 
+![Picture](https://raw.githubusercontent.com/kimgyver/people-app/master/capture.png)
+
 ## Code structure
 
 - Component
